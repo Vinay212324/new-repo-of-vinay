@@ -1,0 +1,252 @@
+<odoo>
+    <record id="view_register_form_tree" model="ir.ui.view">
+        <field name="name">register.form.tree</field>
+        <field name="model">registration.form</field>
+        <field name="arch" type="xml">
+            <tree string="Register Form">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="date_of_birth"/>
+                <field name="religion"/>
+                <field name="caste"/>
+                <field name="phone_number"/>
+                <field name="email"/>
+                <field name="marital_status"/>
+                <field name="time_of_birth"/>
+                <field name="height"/>
+                <field name="registered_by"/>
+                <!-- Add more fields here as needed -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_register_form_form" model="ir.ui.view">
+        <field name="name">register.form.form</field>
+        <field name="model">registration.form</field>
+        <field name="arch" type="xml">
+            <form string="Register Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gender"/>
+                            <field name="date_of_birth"/>
+                            <field name="religion"/>
+                            <field name="caste"/>
+                            <field name="phone_number"/>
+                            <field name="otp_visibility" invisible="1"/>
+                            <field name="otp" attrs="{'invisible': [('otp_visibility', '=', False)]}"/>
+                            <button name="action_click" type="object" string="Reveal OTP" class="btn btn-primary"
+                                    attrs="{'invisible': [('otp_visibility', '=', False)]}"/>
+
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="marital_status"/>
+                            <field name="time_of_birth"/>
+                            <field name="height"/>
+                            <field name="registered_by"/>
+                            <!-- Add more fields here as needed -->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Education Details">
+                            <form>
+                                <group>
+                                    <field name="education_id"/>
+
+                                    <field name="qualification"/>
+                                    <field name="specialization"/>
+                                    <field name="place_of_study"/>
+                                    <field name="year_of_pass"/>
+                                    <!-- Add more education-related fields here -->
+                                </group>
+                            </form>
+                        </page>
+
+                        <page string="Employment Details">
+                            <form>
+                                <group>
+                                    <field name="employment_status"/>
+                                    <field name="designation_id"
+                                           attrs="{'invisible': [('employment_status','==','not working')]}"/>
+                                    <field name="designation"
+                                           attrs="{'invisible': [('employment_status','!=','not working')]}"/>
+                                    <field name="company_name"
+                                           attrs="{'readonly': [('employment_status','==','not working')]}"/>
+                                    <field name="experience"
+                                           attrs="{'readonly': [('employment_status','==','not working')]}"/>
+                                    <field name="location"
+                                           attrs="{'readonly': [('employment_status','==','not working')]}"/>
+                                    <field name="money_type"
+                                           attrs="{'readonly': [('employment_status','==','not working')]}"/>
+                                    <field name="amount_inr"
+                                           attrs="{'invisible': [('money_type', '!=', 'inr')]}"/>
+                                    <field name="amount_usd"
+                                           attrs="{'invisible': [('money_type', '!=', 'usd')]}"/>
+                                    <field name="amount_euro"
+                                           attrs="{'invisible': [('money_type', '!=', 'euro')]}"/>
+                                    <field name="amount_pound"
+                                           attrs="{'invisible': [('money_type', '!=', 'pounds')]}"/>
+                                    <!-- Add more employment-related fields here -->
+                                </group>
+                            </form>
+                        </page>
+
+                        <page string="Family Details">
+                            <form>
+                                <group>
+                                    <field name="father_name"/>
+                                    <field name="father_occupation"/>
+
+                                    <field name="Accounting_Banking"
+                                           attrs="{'invisible': [('father_occupation', '!=', 'Accounting')]}"/>
+
+                                    <field name="administration_Hr"
+                                           attrs="{'invisible': [('father_occupation', '!=', 'administration')]}"/>
+                                    <field name="mother_name"/>
+                                    <field name="mother_occupation"/>
+                                    <field name="mother_Accounting_Banking"
+                                           attrs="{'invisible': [('mother_occupation', '!=', 'Accounting')]}"/>
+                                    <field name="mother_administration_Hr"
+                                           attrs="{'invisible': [('mother_occupation', '!=', 'administration')]}"/>
+                                    <field name="brother_married"/>
+                                    <field name="brother_unmarried"/>
+                                    <field name="sisters_married"/>
+                                    <field name="sisters_unmarried"/>
+                                    <field name="living_in"/>
+                                    <field name="family_hometown"/>
+                                    <!-- Add more family-related fields here -->
+                                </group>
+                            </form>
+                        </page>
+
+                        <page string="Socio-Religious">
+                            <form>
+                                <group>
+                                    <field name="rasi_id"/>
+                                    <field name="star_id"/>
+                                    <!-- Add more socio-religious fields here -->
+                                </group>
+                            </form>
+                        </page>
+
+
+                        <page string="Permanent Location">
+                            <form>
+                                <group>
+                                    <field name="per_country_id"/>
+                                    <field name="per_state_id"
+                                           attrs="{'invisible': [('per_country_id', '==', 'India')]}"/>
+                                    <field name="per_district"
+                                           attrs="{'invisible': [('per_country_id', '==', 'India')]}"/>
+                                    <field name="per_town" attrs="{'invisible': [('per_country_id', '==', 'India')]}"/>
+                                    <field name="address"
+                                           attrs="{'invisible': [('per_country_id', '!=', 'India')]}"/>
+                                    <!-- Add more permanent location fields here -->
+                                </group>
+                            </form>
+                        </page>
+
+                        <page string="Current Location">
+                            <form>
+                                <group>
+                                    <field name="country_id"/>
+                                    <field name="state_id" attrs="{'invisible': [('country_id', '==', 'India')]}"/>
+                                    <field name="district" attrs="{'invisible': [('country_id', '==', 'India')]}"/>
+                                    <field name="town" attrs="{'invisible': [('country_id', '==', 'India')]}"/>
+                                    <field name="address"
+                                           attrs="{'invisible': [('country_id', '!=', 'India')]}"/>
+
+                                    <!-- Add more permanent location fields here -->
+                                </group>
+                            </form>
+                        </page>
+
+                        <page string="Contact Information">
+                            <form>
+                                <group>
+                                    <field name="alternative_phone_number"/>
+                                    <field name="other_r_number"/>
+                                    <!-- Add more contact information fields here -->
+                                </group>
+                            </form>
+                        </page>
+
+<!--                        &lt;!&ndash;                                                <page string="Height B">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                    <form>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                        <group>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                            <field name="height_in_cms"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                            &lt;!&ndash; Add more height-related fields here &ndash;&gt;&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                        </group>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                    </form>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                                </page>&ndash;&gt;-->
+
+                        <page string="Partner Preferences">
+                            <form>
+                                <group>
+                                    <label for="from_age"/>
+                                    <div class="o_row">
+                                        <field name="from_age"/>
+                                        <field name="to_age"/>
+                                    </div>
+
+
+                                    <label for="from_height"/>
+                                    <div class="o_row">
+                                        <field name="from_height" placeholder="from height"/>
+                                        <field name="to_height" placeholder="to height"/>
+
+                                    </div>
+
+                                    <field name="marital_status_ids" widget="many2many_tags"/>
+                                    <field name="eeducation_id" readonly="1"/>
+                                    <field name="employment_status_ids" widget="many2many_tags"/>
+
+                                    <field name="amoney_type"/>
+                                    <field name="aamount_inr"
+                                           attrs="{'invisible': [('amoney_type', '!=', 'inr')]}"/>
+                                    <field name="aamount_usd"
+                                           attrs="{'invisible': [('amoney_type', '!=', 'usd')]}"/>
+                                    <field name="aamount_euro"
+                                           attrs="{'invisible': [('amoney_type', '!=', 'euro')]}"/>
+                                    <field name="aamount_pound"
+                                           attrs="{'invisible': [('amoney_type', '!=', 'pounds')]}"/>
+
+
+                                    <field name="country_ids" widget="many2many_tags"/>
+                                    <field name="state_ids" widget="many2many_tags"/>
+                                    <field name="rreligion"/>
+
+
+                                    <field name="caste_ids" widget="many2many_tags"/>
+
+
+                                    <field name="willing_to_marry_other_caste"/>
+
+                                    <field name="about_preferred_partner"/>
+
+
+                                    <!--                                    &lt;!&ndash; Add more partner preference fields here &ndash;&gt;-->
+                                </group>
+                            </form>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_register_form" model="ir.actions.act_window">
+        <field name="name">Register Forms</field>
+        <field name="res_model">registration.form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_register_form_root" name="Register Forms" sequence="10"/>
+
+    <menuitem id="menu_register_form" name="Register now" parent="menu_register_form_root" action="action_register_form"
+              sequence="10"/>
+
+</odoo>

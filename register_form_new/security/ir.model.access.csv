@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_register_form,model_register_form,model_registration_form,base.group_user,1,1,1,1
+access_education,education_model,model_education_model,base.group_user,1,1,1,1
+access_designation_model,designation_model,model_designation_model,base.group_user,1,1,1,1
+access_rasi,name_rasi,model_rasi_model,base.group_user,1,1,1,1
+access_star,name_star,model_star_model,base.group_user,1,1,1,1
+access_country_model,country_model,model_country_model,base.group_user,1,1,1,1
+access_state_model,state_model,model_state_model,base.group_user,1,1,1,1
+
+
+access_marital_status_user,access_marital_status_user,model_marital_status,base.group_user,1,1,1,1
