@@ -12,3 +12,94 @@ get pull origin :-  git pull origin development
 
 
 
+for sql purpus database creation
+
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons/eenadu-circulation$ cd..
+cd..: command not found
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons/eenadu-circulation$ cd ..
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons$ git clone https://github.com/vation-digital/eenadu-hrms.git
+Cloning into 'eenadu-hrms'...
+Username for 'https://github.com': vinay4321098@gmail.com
+Password for 'https://vinay4321098@gmail.com@github.com': 
+remote: Enumerating objects: 3010, done.
+remote: Counting objects: 100% (750/750), done.
+remote: Compressing objects: 100% (396/396), done.
+remote: Total 3010 (delta 341), reused 607 (delta 327), pack-reused 2260
+Receiving objects: 100% (3010/3010), 7.97 MiB | 1.36 MiB/s, done.
+Resolving deltas: 100% (1342/1342), done.
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons$ get branch
+
+Command 'get' not found, but there are 18 similar ones.
+
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons$ git branch
+fatal: detected dubious ownership in repository at '/opt/odoo/odoo16'
+To add an exception for this directory, call:
+
+        git config --global --add safe.directory /opt/odoo/odoo16
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons$ cd eenadu-hrms/
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons/eenadu-hrms$ git branch
+* master
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons/eenadu-hrms$ cd ..
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons$ git clone https://github.com/vation-digital/eenadu-hrms.git
+Cloning into 'eenadu-hrms'...
+Username for 'https://github.com': vinay4321098@gmail.com
+Password for 'https://vinay4321098@gmail.com@github.com': 
+remote: Enumerating objects: 3010, done.
+remote: Counting objects: 100% (750/750), done.
+remote: Compressing objects: 100% (396/396), done.
+remote: Total 3010 (delta 341), reused 607 (delta 327), pack-reused 2260
+Receiving objects: 100% (3010/3010), 7.97 MiB | 921.00 KiB/s, done.
+Resolving deltas: 100% (1352/1352), done.
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons$ psql
+psql: error: FATAL:  database "odoo" does not exist
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16/Vinay_addons$ cd ..
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16$ psql
+psql: error: FATAL:  database "odoo" does not exist
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16$ sudo su postgres
+[sudo] password for odoo: 
+postgres@odoo-HCL-Desktop:/opt/odoo/odoo16$ psql
+psql (12.18 (Ubuntu 12.18-0ubuntu0.20.04.1))
+Type "help" for help.
+
+postgres=# \q
+postgres@odoo-HCL-Desktop:/opt/odoo/odoo16$ exit
+exit
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16$ sudo su postgres
+postgres@odoo-HCL-Desktop:/opt/odoo/odoo16$ psql
+psql (12.18 (Ubuntu 12.18-0ubuntu0.20.04.1))
+Type "help" for help.
+
+postgres=# alter role jimjam createdb superuser login paswor'admin';
+ERROR:  unrecognized role option "paswor"
+LINE 1: alter role jimjam createdb superuser login paswor'admin';
+                                                   ^
+postgres=# alter role jimjam createdb superuser login pasword'admin';
+ERROR:  unrecognized role option "pasword"
+LINE 1: alter role jimjam createdb superuser login pasword'admin';
+                                                   ^
+postgres=# alter role jimjam createdb superuser login password'admin';
+ERROR:  role "jimjam" does not exist
+postgres=# CREATE ROLE jimjam LOGIN PASSWORD 'admin';
+CREATE ROLE
+postgres=# ALTER ROLE jimjam CREATEDB SUPERUSER;
+ALTER ROLE
+postgres=# SELECT rolname FROM pg_roles WHERE rolname = 'jimjam';
+ rolname 
+---------
+ jimjam
+(1 row)
+
+postgres=# postgres=# SELECT rolname FROM pg_roles WHERE rolname = 'jimjam';
+ERROR:  syntax error at or near "postgres"
+LINE 1: postgres=# SELECT rolname FROM pg_roles WHERE rolname = 'jim...
+        ^
+postgres=# /q
+postgres-# \q
+postgres@odoo-HCL-Desktop:/opt/odoo/odoo16$ exit
+exit
+(odoo16-venv) odoo@odoo-HCL-Desktop:/opt/odoo/odoo16$ 
+
+
+
+
+
